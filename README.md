@@ -6,7 +6,7 @@ A wrapper that automatically detects Proton games through `protonhax`, and launc
 
 ## Dependencies
 
-- **[`Cheat Engine](https://cheatengine.org/)**
+- **[`Cheat Engine`](https://cheatengine.org/)**
 
 - **[`protonhax`](https://github.com/jcnils/protonhax)**
 
