@@ -6,22 +6,22 @@
 game=$(protonhax ls 2>/dev/null | head -n 1)
 
 if [ -z "$game" ]; then
-    echo "❌ No Proton game is currently running."
+    echo "No Proton game is currently running."
     exit 1
 fi
 
-echo "✅ Detected Proton game: $game"
+echo "Detected Proton game: $game"
 
 # --- Step 2: Search for exact "Cheat Engine.exe" (case-insensitive) ---
 SEARCH_DIR="${1:-$HOME}"
 cheatengine_exe=$(find "$SEARCH_DIR" -type f -iname "Cheat Engine.exe" -print -quit)
 
 if [ -z "$cheatengine_exe" ]; then
-    echo "❌ 'Cheat Engine.exe' not found in $SEARCH_DIR"
+    echo "'Cheat Engine.exe' not found in $SEARCH_DIR"
     exit 1
 fi
 
-echo "✅ Found exact Cheat Engine.exe at: $cheatengine_exe"
+echo "Found exact Cheat Engine.exe at: $cheatengine_exe"
 
 # --- Step 3: Launch Cheat Engine using protonhax ---
 protonhax run "$game" "$cheatengine_exe" &
@@ -37,7 +37,7 @@ ps aux | grep -i steamapps | grep -vi proton | grep -vi steam.exe | grep -v grep
     pid=$(echo "$line" | awk '{print $2}')
     echo "Using PID $pid as target."
 
-    echo "⏳ Waiting for process PID $pid to exit..."
+    echo "Waiting for process PID $pid to exit..."
     while kill -0 "$pid" 2>/dev/null; do
         sleep 1
     done
